@@ -1,0 +1,6 @@
+FROM jupyter/datascience-notebook:python-3.9.10
+
+RUN ["pip", "install", "pika"]
+
+
+EXPOSE 8888

@@ -2,7 +2,9 @@ version: "3"
 
 services:
   jupyter:
-    image: jupyter/datascience-notebook:python-3.9.10
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile.jupyter
     ports:
       - "8888:8888"
     volumes:
@@ -11,7 +13,7 @@ services:
   rabbit:
     image: rabbitmq:management
     ports:
-      - "15671:15671"
+      - "5672:5672"
       - "15672:15672"
     volumes:
       - rabbit:/var/lib/rabbitmq
