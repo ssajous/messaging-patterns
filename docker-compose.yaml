@@ -10,6 +10,22 @@ services:
     volumes:
       - ./notebooks:/home/jovyan/work
 
+  work-queue-python-worker:
+    build:
+      context: ./work-queue-python
+    depends_on:
+      - "rabbit"
+      - "jupyter"
+    restart: always
+
+  work-queue-js-worker:
+    build:
+      context: ./work-queue-js
+    depends_on:
+      - "rabbit"
+      - "jupyter"
+    restart: always
+
   rabbit:
     image: rabbitmq:management
     ports:

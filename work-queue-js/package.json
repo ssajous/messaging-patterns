@@ -1,0 +1,16 @@
+{
+  "name": "work-queue",
+  "version": "1.0.0",
+  "description": "Work queue example written in Javascript",
+  "main": "index.js",
+  "dependencies": {
+    "amqplib": "^0.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
