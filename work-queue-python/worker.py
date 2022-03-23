@@ -1,13 +1,17 @@
 import pika
 import time
+import random
+
 
 RABBIT_CONNECTION = 'amqp://guest:guest@rabbit:5672/'
 QUEUE_NAME = 'work_queue_example'
 
+
 def callback(ch, method, properties, body):
     print(f"Received {body.decode()} in Python", flush=True)
-    time.sleep(2)
+    time.sleep(random.randint(1, 10))
     ch.basic_ack(delivery_tag=method.delivery_tag)
+
     
 def start_work():
     connection = pika.BlockingConnection(
