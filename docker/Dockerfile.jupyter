@@ -4,3 +4,5 @@ RUN ["pip", "install", "pika"]
 
 
 EXPOSE 8888
+
+CMD start-notebook.sh --NotebookApp.password='argon2:$argon2id$v=19$m=10240,t=10,p=8$1jsyKVc6vNWZyILWnRdXDA$i1Gz7WducQMYD/PMCrLMvkJsQQzPbSxsCO1qFUzamT0'
