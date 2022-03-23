@@ -26,6 +26,14 @@ services:
       - "jupyter"
     restart: always
 
+  pub-sub-js-subscriber:
+    build: 
+      context: ./pub-sub
+    depends_on:
+      - "rabbit"
+      - "jupyter"
+    restart: always
+
   rabbit:
     image: rabbitmq:management
     ports:
