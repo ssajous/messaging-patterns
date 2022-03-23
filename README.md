@@ -16,8 +16,8 @@ This project includes a Jupyter server with sample notebooks along with some jav
 
 ### UI Pages
 
-Once the docker containers are started Jupyter Lab can be accessed at http://localhost:8888/lab/workspaces/auto-C/tree/work. Notebook password: `jupyter`
+Once the docker containers are started Jupyter Lab can be accessed at http://localhost:8888/lab/workspaces/auto-C/tree/work. **Notebook password**: `jupyter`
 
-The RabbitMQ admin console can be accessed at http://localhost:15672/ username: `guest` password: `guest`
+The RabbitMQ admin console can be accessed at http://localhost:15672/ **username**: `guest` **password**: `guest`
 
 
