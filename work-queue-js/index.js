@@ -15,20 +15,27 @@ const listen = () => {
       }
 
       channel.assertQueue(QUEUE_NAME, { durable: true })
+
+      // prefetch(1) tells rabbit to only give 1 message to a worker at a time. It won't send another message
+      // until an Ack(nowledgement) has been received for the previous message.  Otherwise the default behavior
+      // is round-robin. A prefetch of 1 will result in workers picking up work as soon as they're ready.
       channel.prefetch(1)
 
 
       console.log("Javascript Worker Started")
 
       channel.consume(QUEUE_NAME, (msg) => {
-        console.log(`Recieved ${msg.content.toString()} in Javascript`)
+        const data = JSON.parse(msg.content.toString())
+        console.log(`Recieved ${data.message} in Javascript`)
+        const waitTime = data.effort * 1000
+
+        // sending an ack tells rabbit that this message has been successfully processed
         setTimeout(() => {
           channel.ack(msg)
-        }, 2000)
+        }, waitTime)
       }, { noAck: false })
     })
   })
 }
 
-// Start listening after 10 seconds to give services time to start
-setTimeout(listen, 10000)
+listen()

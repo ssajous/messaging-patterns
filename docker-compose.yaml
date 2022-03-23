@@ -24,7 +24,7 @@ services:
     depends_on:
       - "rabbit"
       - "jupyter"
-    restart: always
+    restart: on-failure
 
   pub-sub-js-subscriber:
     build: 
@@ -32,7 +32,7 @@ services:
     depends_on:
       - "rabbit"
       - "jupyter"
-    restart: always
+    restart: on-failure
 
   rabbit:
     image: rabbitmq:management
